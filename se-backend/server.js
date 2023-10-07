@@ -47,7 +47,7 @@ const readData = async () => {
     }
 }
 
-readData()
+// readData()
 
 
 app.post('/home', (req, res) => {
