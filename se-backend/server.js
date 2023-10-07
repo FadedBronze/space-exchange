@@ -6,6 +6,8 @@ const cors = require('cors');
 const { MongoClient } = require('mongodb');
 const uri = process.env.URI
 const client = new MongoClient(uri);
+const myDatabase = "main"
+const myCollection = "main"
 
 let personDocument = {
     "hi": "test"
@@ -27,11 +29,26 @@ async function connectToMongoDB() {
 connectToMongoDB().catch(console.dir);
 
 const saveData = async (data) => {
-    const db = client.db("main");
-    const col = db.collection("main");
+    const db = client.db(db);
+    const col = db.collection(collection);
     const p = await col.insertOne(personDocument);
 }
-saveData(personDocument);
+
+// saveData(personDocument);
+
+const readData = async () => {
+    const db = client.db(myDatabase);
+    const collection = db.collection(myCollection);
+    try {
+        const documents = await collection.find({}).toArray();
+        console.log('Read data from MongoDB:', documents);
+    } catch (err) {
+        console.error('Error reading data from MongoDB:', err);
+    }
+}
+
+readData()
+
 
 app.post('/home', (req, res) => {
     const requestData = req.body;
