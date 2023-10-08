@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Landing from "./Components/Landing.jsx";
 import { SearchContextProvider } from "./searchContext";
+import Bubbles from "./Components/Bubbles";
 
 const router = createBrowserRouter([
   {
@@ -16,11 +17,15 @@ const router = createBrowserRouter([
   {
     path: "browse",
     element: <Browse></Browse>,
-  }, {
+  },
+  {
     path: "add",
-    element: <Add></Add>
-
-  }
+    element: <Add></Add>,
+  },
+  {
+    path: "bubbles",
+    element: <Bubbles></Bubbles>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

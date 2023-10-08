@@ -41,7 +41,12 @@ export default function LandingPage() {
             >
               Browse
             </button>
-            <button className="border-2 bg-white rounded-full max-md:bg-transparent max-md:w- max-md:text-sm max-md:border-0 max-md:text-white max-md:p-0 md:px-4 py-1.5">
+            <button
+              onClick={() => {
+                navigate("/add");
+              }}
+              className="border-2 bg-white rounded-full max-md:bg-transparent max-md:w- max-md:text-sm max-md:border-0 max-md:text-white max-md:p-0 md:px-4 py-1.5"
+            >
               Build Your Idea
             </button>
           </div>
