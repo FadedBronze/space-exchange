@@ -361,6 +361,13 @@ function Filters() {
           setSelected={setKeywords}
           name="skills"
         ></MultiSelectDropdownMenu>
+        <button
+          onClick={() => {
+            navigate("/bubbles");
+          }}
+        >
+          GO TO BUBBLE FINDER!
+        </button>
       </div>
     </form>
   );

@@ -6,24 +6,18 @@ export function BubblesThing({ options, selected, setSelected }) {
   const angles = Math.PI * 2;
   const section = angles / options.length;
   const [offset, setOffset] = useState(0);
-  const [fadeBack, setFadeBack] = useState(false);
 
   useInterval(() => {
     setOffset((o) => o + 0.01);
   }, 30);
 
-  return fadeBack ? (
-    <div className="w-full h-screen bg-blue-500 fade"></div>
-  ) : (
+  return (
     <div className="w-full h-screen relative">
       {options.map((topic, idx) => (
         // eslint-disable-next-line react/jsx-key
         <button
           onClick={() => {
             setSelected(topic);
-            setTimeout(() => {
-              setFadeBack(true);
-            }, 200);
           }}
           key={topic}
           className="absolute p-6 bg-blue-500 rounded-full text-center text-white font-bold "
