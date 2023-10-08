@@ -1,5 +1,9 @@
-export default function Bubbles() {
-  
+import { BubblesThing } from "./Thing";
 
-  return <div></div>;
+export default function Bubbles() {
+  return (
+    <div className="w-full h-full">
+      <BubblesThing></BubblesThing>
+    </div>
+  );
 }
