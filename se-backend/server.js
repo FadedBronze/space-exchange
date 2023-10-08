@@ -6,12 +6,9 @@ const cors = require('cors');
 const { MongoClient } = require('mongodb');
 const uri = process.env.URI
 const client = new MongoClient(uri);
-const myDatabase = "main"
-const myCollection = "main"
-
-let personDocument = {
-    "hi": "test"
-}
+const myDatabase = "test"
+const myCollection = "test"
+let data = []
 
 app.use(express.json());
 app.use(cors({
@@ -29,33 +26,75 @@ async function connectToMongoDB() {
 connectToMongoDB().catch(console.dir);
 
 const saveData = async (data) => {
-    const db = client.db(db);
-    const col = db.collection(collection);
-    const p = await col.insertOne(personDocument);
+    const db = client.db(myDatabase);
+    const col = db.collection(myCollection);
+    const p = await col.insertOne(data);
 }
-
-// saveData(personDocument);
 
 const readData = async () => {
     const db = client.db(myDatabase);
     const collection = db.collection(myCollection);
     try {
-        const documents = await collection.find({}).toArray();
-        console.log('Read data from MongoDB:', documents);
+        data = await collection.find({}).toArray();
+
     } catch (err) {
         console.error('Error reading data from MongoDB:', err);
     }
 }
 
-// readData()
+readData()
 
-
-app.post('/home', (req, res) => {
-    const requestData = req.body;
-    console.log('Received POST data:', requestData);
-
+app.post('/api/add', (req, res) => {
+    saveData(req.body)
     res.status(200).json({});
 });
+
+app.post("/api/home", (req, res) => {
+    readData()
+    res.status(200).json(data)
+})
+
+app.post("/api/filter", (req, res) => {
+    const filteredObject = []
+    console.log(req.body)
+    if (req.body.tags && req.body.skills) {
+        const requiredTags = req.body.tags;
+        for (let i = 0; i < data.length; i++) {
+            const project = data[i];
+            if (requiredTags.every(tag => project.tags.includes(tag))) {
+                const requiredSkills = req.body.skills;
+                for (let i = 0; i < data.length; i++) {
+                    const project = data[i];
+                    if (project.skills && requiredSkills.every(skill => project.skills.includes(skill))) {
+                        filteredObject.push(project);
+                    }
+                }
+            }
+        }
+
+    }
+    else if (req.body.tags) {
+        const requiredTags = req.body.tags;
+        for (let i = 0; i < data.length; i++) {
+            const project = data[i];
+            if (requiredTags.every(tag => project.tags.includes(tag))) {
+                filteredObject.push(project);
+            }
+        }
+
+    } else if (req.body.skills) {
+        const requiredSkills = req.body.skills;
+        for (let i = 0; i < data.length; i++) {
+            const project = data[i];
+            if (project.skills && requiredSkills.every(skill => project.skills.includes(skill))) {
+                filteredObject.push(project);
+            }
+        }
+
+    }
+    res.status(200).json(filteredObject)
+    console.log(filteredObject)
+})
 
 app.listen(3000, () => {
     console.log(`Server is running on http://localhost:${port}`);
