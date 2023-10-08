@@ -84,7 +84,7 @@ function Idea(props) {
           <div>
             <span className="text-md">Categories:</span>
             <div>
-              {props.categories.map((category) => (
+              {props.tags.map((category) => (
                 <div className="text-[12px]" key={category}>
                   {category}
                 </div>
@@ -121,7 +121,182 @@ function IdeaViewer() {
     console.log(data);
   }, [data]);
 
-  const dummyData = [];
+  const dummyData = [
+    {
+      published: "2023-01-15",
+      publisher: "Research Institute A",
+      title: "Exploring Sustainable Agriculture Practices",
+      tags: ["app development"],
+      skills: [
+        "Data Analysis",
+        "Environmental Science",
+        "Agricultural Economics",
+      ],
+    },
+    {
+      published: "2023-02-10",
+      publisher: "University X",
+      title: "Mapping Biodiversity in Urban Areas",
+      tags: ["biology"],
+      skills: ["GIS", "Ecology", "Data Collection"],
+    },
+    {
+      published: "2023-03-05",
+      publisher: "Scientific Society Y",
+      title: "Analyzing Climate Change Impacts on Wildlife Migration",
+      tags: ["machine learning"],
+      skills: ["Climate Science", "Wildlife Biology", "Data Modeling"],
+    },
+    {
+      published: "2023-04-20",
+      publisher: "Environmental NGO Z",
+      title: "Assessing Air Quality in Urban Environments",
+      tags: ["space"],
+      skills: [
+        "Air Quality Monitoring",
+        "Data Visualization",
+        "Environmental Health",
+      ],
+    },
+    {
+      published: "2023-05-12",
+      publisher: "Research Institute B",
+      title: "Investigating the Microbiome of Coral Reefs",
+      tags: ["biology"],
+      skills: ["Marine Biology", "Microbiology", "DNA Sequencing"],
+    },
+    {
+      published: "2023-06-08",
+      publisher: "Academic Institution C",
+      title: "Studying the Effects of Social Media on Mental Health",
+      tags: ["app development"],
+      skills: ["Psychology", "Data Analysis", "Survey Design"],
+    },
+    {
+      published: "2023-07-14",
+      publisher: "Nonprofit Organization D",
+      title: "Promoting STEM Education in Underserved Communities",
+      tags: ["app development"],
+      skills: ["Education", "Outreach", "Curriculum Development"],
+    },
+    {
+      published: "2023-08-19",
+      publisher: "Research Foundation E",
+      title: "Advancing Renewable Energy Technologies",
+      tags: ["machine learning"],
+      skills: [
+        "Renewable Energy Engineering",
+        "Materials Science",
+        "Data Analysis",
+      ],
+    },
+    {
+      published: "2023-09-25",
+      publisher: "Scientific Society F",
+      title: "Investigating the Effects of Pollution on River Ecosystems",
+      tags: ["space"],
+      skills: ["Ecology", "Water Quality Analysis", "Field Research"],
+    },
+    {
+      published: "2023-10-01",
+      publisher: "Tech Startup G",
+      title: "Building Cross-Platform Mobile Apps",
+      tags: ["app development"],
+      skills: ["Mobile App Development", "UI/UX Design", "React Native"],
+    },
+    {
+      published: "2023-10-15",
+      publisher: "Software Company H",
+      title: "Developing Enterprise Desktop Applications",
+      tags: ["app development"],
+      skills: ["Desktop App Development", "Java", "C#"],
+    },
+    {
+      published: "2023-10-05",
+      publisher: "Research Institute I",
+      title: "Studying Plant Genetics",
+      tags: ["biology"],
+      skills: ["Genetics", "Plant Biology", "Molecular Biology"],
+    },
+    {
+      published: "2023-10-20",
+      publisher: "Environmental Conservation Group J",
+      title: "Conservation of Endangered Species",
+      tags: ["biology"],
+      skills: ["Wildlife Conservation", "Ecology", "Field Research"],
+    },
+    {
+      published: "2023-10-10",
+      publisher: "AI Startup K",
+      title: "Implementing Natural Language Processing Models",
+      tags: ["machine learning"],
+      skills: ["NLP", "Deep Learning", "Python"],
+    },
+    {
+      published: "2023-10-25",
+      publisher: "Research Institute L",
+      title: "Predictive Analytics for Healthcare",
+      tags: ["machine learning"],
+      skills: ["Healthcare Data Analysis", "Machine Learning Algorithms"],
+    },
+    {
+      published: "2023-10-12",
+      publisher: "Space Exploration Agency M",
+      title: "Mars Colonization Project",
+      tags: ["space"],
+      skills: ["Astronomy", "Space Engineering", "Rocket Science"],
+    },
+    {
+      published: "2023-10-28",
+      publisher: "Climate Research N",
+      title: "Climate Change and Earth's Atmosphere",
+      tags: ["space"],
+      skills: [
+        "Atmospheric Science",
+        "Climate Modeling",
+        "Environmental Research",
+      ],
+    },
+    {
+      published: "2023-11-02",
+      publisher: "Tech Startup O",
+      title: "Creating Mobile Games for Android and iOS",
+      tags: ["mobile apps"],
+      skills: ["Game Development", "Unity", "Game Design"],
+    },
+    {
+      published: "2023-11-15",
+      publisher: "Research Institute P",
+      title: "Advanced Studies in Human Anatomy",
+      tags: ["anatomy"],
+      skills: ["Human Anatomy Dissection", "Medical Illustration", "Histology"],
+    },
+    {
+      published: "2023-11-10",
+      publisher: "AI Research Q",
+      title: "Ethical Considerations in AI Development",
+      tags: ["ai"],
+      skills: ["Ethics in AI", "AI Policy", "Responsible AI Development"],
+    },
+    {
+      published: "2023-11-20",
+      publisher: "Space Research R",
+      title: "Journey to the Red Planet - Mars Exploration",
+      tags: ["Mars"],
+      skills: ["Mars Rover Operations", "Martian Geology", "Space Exploration"],
+    },
+    {
+      published: "2023-11-30",
+      publisher: "Environmental NGO S",
+      title: "Earth's Ecosystems and Conservation",
+      tags: ["Earth"],
+      skills: [
+        "Conservation Biology",
+        "Ecosystem Monitoring",
+        "Environmental Advocacy",
+      ],
+    },
+  ];
 
   return (
     <div
@@ -130,13 +305,19 @@ function IdeaViewer() {
         lineHeight: 1.1,
       }}
     >
-      {dummyData.map((data) => (
-        // eslint-disable-next-line react/jsx-key
-        <Idea
-          key={data.title + data.publisher + data.published}
-          {...data}
-        ></Idea>
-      ))}
+      {dummyData
+        .filter(
+          ({ title, skills: s, tags: t }) =>
+            title.includes(search) &&
+            (keywords.some((d) => t.includes(d)) || keywords.length === 0)
+        )
+        .map((data) => (
+          // eslint-disable-next-line react/jsx-key
+          <Idea
+            key={data.title + data.publisher + data.published}
+            {...data}
+          ></Idea>
+        ))}
     </div>
   );
 }
@@ -169,8 +350,8 @@ function Filters() {
             "machine learning": ["LLMS", "ai"],
             space: ["Mars", "Earth"],
           }}
-          selected={skills}
-          setSelected={setSkills}
+          selected={keywords}
+          setSelected={setKeywords}
           name="skills"
         ></MultiSelectDropdownMenu>
       </div>
