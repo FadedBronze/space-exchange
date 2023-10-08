@@ -1,0 +1,192 @@
+[
+    {
+        "_id": "6521c683d13bd446ad157e2f",
+        "title": "my Space Porject",
+        "image": "imgaeLink",
+        "discpription": "my first space project",
+        "views": "0",
+        "tags": [
+            "#img",
+            "#idk"
+        ],
+        "skill": [
+            "js",
+            "ts"
+        ],
+        "collaborators": [
+            "sam",
+            "sidak"
+        ]
+    },
+    {
+        "_id": "6521c8c5d13bd446ad157e30",
+        "title": "Mars Rover Expedition",
+        "image": "imageLink1",
+        "description": "Our mission to explore Mars with a rover",
+        "views": 0,
+        "tags": [
+            "#space",
+            "#exploration"
+        ],
+        "skills": [
+            "Robotics",
+            "Python"
+        ],
+        "collaborators": [
+            "Alice",
+            "Bob"
+        ]
+    },
+    {
+        "_id": "6521c8ded13bd446ad157e31",
+        "title": "Astronomy Blog",
+        "image": "imageLink2",
+        "description": "A blog about the wonders of the universe",
+        "views": 0,
+        "tags": [
+            "#space",
+            "#astronomy"
+        ],
+        "skills": [
+            "Writing",
+            "Astrophysics"
+        ],
+        "collaborators": [
+            "Eva",
+            "David"
+        ]
+    },
+    {
+        "_id": "6521c8e6d13bd446ad157e32",
+        "title": "Satellite Deployment",
+        "image": "imageLink3",
+        "description": "Launching a satellite into orbit",
+        "views": 0,
+        "tags": [
+            "#space",
+            "#technology"
+        ],
+        "skills": [
+            "Rocket Science",
+            "Electrical Engineering"
+        ],
+        "collaborators": [
+            "Sophia",
+            "Michael"
+        ]
+    },
+    {
+        "_id": "6521c8efd13bd446ad157e33",
+        "title": "Galaxy Photography Project",
+        "image": "imageLink4",
+        "description": "Capturing stunning images of distant galaxies",
+        "views": 0,
+        "tags": [
+            "#space",
+            "#photography"
+        ],
+        "skills": [
+            "Photography",
+            "Telescope Operation"
+        ],
+        "collaborators": [
+            "Olivia",
+            "Jackson"
+        ]
+    },
+    {
+        "_id": "6521c8f6d13bd446ad157e34",
+        "title": "Space Art Exhibition",
+        "image": "imageLink5",
+        "description": "Showcasing artistic interpretations of the cosmos",
+        "views": 0,
+        "tags": [
+            "#space",
+            "#art"
+        ],
+        "skills": [
+            "Painting",
+            "Sculpture"
+        ],
+        "collaborators": [
+            "Isabella",
+            "Liam"
+        ]
+    },
+    {
+        "_id": "6521c901d13bd446ad157e35",
+        "title": "Rocket Engine Development",
+        "image": "imageLink6",
+        "description": "Creating powerful rocket engines for space travel",
+        "views": 0,
+        "tags": [
+            "#space",
+            "#engineering"
+        ],
+        "skills": [
+            "Mechanical Engineering",
+            "Propulsion"
+        ],
+        "collaborators": [
+            "Ava",
+            "Noah"
+        ]
+    },
+    {
+        "_id": "6521c909d13bd446ad157e36",
+        "title": "Space Podcast Series",
+        "image": "imageLink7",
+        "description": "Exploring the cosmos through podcast episodes",
+        "views": 0,
+        "tags": [
+            "#space",
+            "#podcast"
+        ],
+        "skills": [
+            "Audio Editing",
+            "Science Communication"
+        ],
+        "collaborators": [
+            "Luna",
+            "Caleb"
+        ]
+    },
+    {
+        "_id": "6521c912d13bd446ad157e37",
+        "title": "International Space Station Research",
+        "image": "imageLink8",
+        "description": "Conducting experiments on the ISS",
+        "views": 0,
+        "tags": [
+            "#space",
+            "#research"
+        ],
+        "skills": [
+            "Microgravity Science",
+            "Collaborative Research"
+        ],
+        "collaborators": [
+            "Hannah",
+            "Ethan"
+        ]
+    },
+    {
+        "_id": "new ObjectId(\"6521c912d13bd446ad157e37\")",
+        "title": "International Space Station Research",
+        "image": "imageLink8",
+        "description": "Conducting experiments on the ISS",
+        "views": "0",
+        "tags": [
+            "#space",
+            "#research"
+        ],
+        "skills": [
+            "Microgravity Science",
+            "Collaborative Research"
+        ],
+        "collaborators": [
+            "Hannah",
+            "Ethan"
+        ]
+    }
+]

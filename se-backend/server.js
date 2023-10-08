@@ -55,48 +55,9 @@ app.get("/home", (req, res) => {
 });
 
 app.post("/filter", (req, res) => {
-    const filteredObject = [];
-    console.log(req.body);
-    if (req.body.tags && req.body.skills) {
-        const requiredTags = req.body.tags;
-        for (let i = 0; i < data.length; i++) {
-            const project = data[i];
-            if (requiredTags.every((tag) => project.tags.includes(tag))) {
-                const requiredSkills = req.body.skills;
-                for (let i = 0; i < data.length; i++) {
-                    const project = data[i];
-                    if (
-                        project.skills &&
-                        requiredSkills.every((skill) => project.skills.includes(skill))
-                    ) {
-                        filteredObject.push(project);
-                    }
-                }
-            }
-        }
-    } else if (req.body.tags) {
-        const requiredTags = req.body.tags;
-        for (let i = 0; i < data.length; i++) {
-            const project = data[i];
-            if (requiredTags.every((tag) => project.tags.includes(tag))) {
-                filteredObject.push(project);
-            }
-        }
-    } else if (req.body.skills) {
-        const requiredSkills = req.body.skills;
-        for (let i = 0; i < data.length; i++) {
-            const project = data[i];
-            if (
-                project.skills &&
-                requiredSkills.every((skill) => project.skills.includes(skill))
-            ) {
-                filteredObject.push(project);
-            }
-        }
-    }
-    res.status(200).json(filteredObject);
-    console.log(filteredObject);
+    readData().then(() => res.status(200).json(data));
 });
+
 
 app.post('/search', (req, res) => {
     let projects = []

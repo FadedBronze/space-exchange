@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Browse from "./Components/Browse";
+import Add from "./Components/Add";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -15,7 +16,11 @@ const router = createBrowserRouter([
   {
     path: "browse",
     element: <Browse></Browse>,
-  },
+  }, {
+    path: "add",
+    element: <Add></Add>
+
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
