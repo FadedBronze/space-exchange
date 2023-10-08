@@ -113,9 +113,13 @@ function IdeaViewer() {
 
   useEffect(() => {
     axios.get("/home").then((ideas) => {
-      setData(ideas);
+      setData(ideas.data);
     });
   }, []);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const dummyData = [
     {
@@ -230,30 +234,17 @@ function Filters() {
         <Search></Search>
         <MultiSelectDropdownMenu
           dropDowns={[
-            "a house",
-            "a mouse",
-            "arouse",
-            "a spouse",
-            "a blouse",
-            "about",
-            "sellouts",
-            "a pouch",
+            "app development",
+            "biology",
+            "machine learning",
+            "space",
           ]}
-          selected={keywords}
-          setSelected={setKeywords}
-          name="keywords"
-        ></MultiSelectDropdownMenu>
-        <MultiSelectDropdownMenu
-          dropDowns={[
-            "a house",
-            "a mouse",
-            "arouse",
-            "a spouse",
-            "a blouse",
-            "about",
-            "sellouts",
-            "a pouch",
-          ]}
+          additionalDropDowns={{
+            "app development": ["desktop apps", "mobile apps"],
+            biology: ["cells", "anatomy"],
+            "machine learning": ["LLMS", "ai"],
+            space: ["Mars", "Earth"],
+          }}
           selected={skills}
           setSelected={setSkills}
           name="skills"
@@ -287,8 +278,21 @@ function Search() {
 }
 
 function MultiSelectDropdownMenu(props) {
-  const { dropDowns, selected, setSelected, name } = props;
+  const { dropDowns, selected, setSelected, name, additionalDropDowns } = props;
   const [down, setDown] = useState();
+  const [totalDropDowns, setTotalDropDowns] = useState([]);
+
+  useEffect(() => {
+    const newTotalDropdowns = [];
+
+    dropDowns.map((dropDown) => {
+      if (selected.includes(dropDown)) {
+        newTotalDropdowns.push(...additionalDropDowns[dropDown]);
+      }
+    });
+
+    setTotalDropDowns([...dropDowns, ...newTotalDropdowns]);
+  }, [additionalDropDowns, dropDowns, selected]);
 
   return (
     <div className="relative">
@@ -300,8 +304,8 @@ function MultiSelectDropdownMenu(props) {
         {down ? ">" : "^"} {name}
       </button>
       {down && (
-        <div className="absolute top-15 left-0 w-40 bg-gray-200 rounded-lg p-4 z-20">
-          {dropDowns.map((dropDown) => (
+        <div className="absolute top-15 left-0 w-50 bg-gray-200 rounded-lg p-4 z-20">
+          {totalDropDowns.map((dropDown) => (
             <button
               className="border-b border-black block"
               key={dropDown}
