@@ -1,17 +1,34 @@
 import searchIcon from "../assets/search.svg";
 import Bg from "../assets/landingBg.png";
+import Bg2 from "../assets/cable.png";
+import Bg3 from "../assets/city.png";
+import Bg4 from "../assets/cloud.png";
+import Bg5 from "../assets/ggn.png";
+
 import Logo from "../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../searchContext";
+import useInterval from "../useInterval";
+import { useState } from "react";
+
+const images = [Bg, Bg2, Bg3, Bg4, Bg5];
 
 export default function LandingPage() {
   const navigate = useNavigate();
   const { setSearch } = useSearch();
+  const [image, setImage] = useState(0);
+
+  useInterval(() => {
+    setImage((img) => img + 1);
+  }, 6000);
 
   return (
     <div className="w-full h-screen flex justify-center items-center relative">
-      <img className="w-full h-full object-center object-cover" src={Bg}></img>
-
+      <img
+        className="w-full h-full absolute left-0 right-0 object-center object-cover"
+        src={images[image % 5]}
+      ></img>
+      <div className="w-full h-full absolute left-0 right-0 object-center object-cover bg-black bg-opacity-50"></div>
       <div className="absolute top-0 left-0 w-full h-full px-12 py-4">
         <nav className="md:h-20 max-md:h-15 flex justify-between">
           <img className="max-md:h-8" src={Logo} />
