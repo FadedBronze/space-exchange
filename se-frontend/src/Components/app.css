@@ -1,11 +1,68 @@
 h1 {
   color: white;
-  font-size: 48px;
+  font-size: 48px !important;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 #backGround {
   background: url("../assets/ggn.png") no-repeat fixed;
   background-size: cover;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#titleInputDiv > input {
+  width: 90%;
+}
+.glass {
+  margin-top: 20px;
+  height: 50px;
+  width: 80%;
+  background-color: #ffffff20;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 2px solid black;
+}
+
+.center {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 20px;
+}
+.center > input::placeholder {
+  color: white;
+  padding-left: 20px;
+}
+#categoriesInputDiv > input {
+  width: 70%;
+}
+#skillsInputDiv > input {
+  width: 70%;
+}
+.bigBox {
+  height: 150px;
+  width: 30%;
+  min-width: 20%;
+  display: flex;
+  margin-left: 0px !important;
+}
+.bigBox > input {
+  min-width: 100%;
+  height: 150px;
+  margin-left: 0px !important;
+}
+#con {
+  display: flex;
+  justify-content: space-evenly;
+}
+.idk {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 28px;
 }

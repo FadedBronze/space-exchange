@@ -48,6 +48,8 @@ readData();
 
 app.post("/add", (req, res) => {
     saveData(req.body).then(() => res.status(200).json({}));
+    console.log(req.body)
+    readData().then(console.log(data))
 });
 
 app.get("/home", (req, res) => {
