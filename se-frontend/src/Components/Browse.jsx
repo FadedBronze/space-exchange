@@ -6,15 +6,6 @@ import { useEffect, useState } from "react";
 import axios from "../axios";
 
 function Browse() {
-  const { search, keywords, skills } = useSearch();
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    axios.get("/home").then((ideas) => {
-      console.log(ideas.data);
-    });
-  }, []);
-
   return (
     <div className="w-full flex h-screen">
       <FiltersDrawer></FiltersDrawer>
@@ -117,6 +108,15 @@ function Idea(props) {
 }
 
 function IdeaViewer() {
+  const { search, keywords, skills } = useSearch();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    axios.get("/home").then((ideas) => {
+      setData(ideas);
+    });
+  }, []);
+
   const dummyData = [
     {
       published: "2023-01-15",
