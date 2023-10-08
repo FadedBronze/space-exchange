@@ -123,6 +123,14 @@ function IdeaViewer() {
   }, [data]);
 
   const dummyData = [
+    //data used from nasa source
+    {
+      published: "2022",
+      publisher: "Marek Slipski",
+      title: "Cloud Spotting On Mars",
+      tags: ["science", "Mars"],
+      skills: ["Space Analysis", "Telescope Analysis"],
+    },
     {
       published: "2023-01-15",
       publisher: "Research Institute A",
