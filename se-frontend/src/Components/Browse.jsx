@@ -4,6 +4,7 @@ import Logo from "../assets/Logo.png";
 import { useSearch } from "../searchContext";
 import { useEffect, useState } from "react";
 import axios from "../axios";
+import { useNavigate } from "react-router";
 
 function Browse() {
   return (
@@ -122,6 +123,14 @@ function IdeaViewer() {
   }, [data]);
 
   const dummyData = [
+    //data used from nasa source
+    {
+      published: "2022",
+      publisher: "Marek Slipski",
+      title: "Cloud Spotting On Mars",
+      tags: ["science", "Mars"],
+      skills: ["Space Analysis", "Telescope Analysis"],
+    },
     {
       published: "2023-01-15",
       publisher: "Research Institute A",
@@ -324,6 +333,7 @@ function IdeaViewer() {
 
 function Filters() {
   const { keywords, setKeywords, skills, setSkills } = useSearch();
+  const navigate = useNavigate();
 
   return (
     <form
@@ -332,7 +342,12 @@ function Filters() {
       }}
       className="bg-gray-100 w-60 h-full box-border"
     >
-      <div className="bg-gray-950 w-60 border-white border-8">
+      <div
+        className="bg-gray-950 w-60 border-white border-8"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <img src={Logo} />
       </div>
       <div className="p-2">
@@ -354,6 +369,13 @@ function Filters() {
           setSelected={setKeywords}
           name="skills"
         ></MultiSelectDropdownMenu>
+        <button
+          onClick={() => {
+            navigate("/bubbles");
+          }}
+        >
+          GO TO BUBBLE FINDER!
+        </button>
       </div>
     </form>
   );
